@@ -15,13 +15,28 @@ namespace OefAthlete.Models
             set { _name = value; }
         }
 
+        private int runTime;
+
+        public int RunTime
+        {
+            get { return runTime; }
+            set { runTime = value; }
+        }
+
+
         public Athlete()
         {
 
         }
         public Athlete(string name, int seconds)
         {
+            Name = name;
+            RunTime = seconds;
+        }
 
+        public override string? ToString()
+        {
+            return $"Naam: {Name} - Rentijd: {RunTime}s";
         }
     }
 }

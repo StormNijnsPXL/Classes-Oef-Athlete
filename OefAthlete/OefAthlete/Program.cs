@@ -6,11 +6,25 @@ namespace OefAthlete
     {
         static void Main(string[] args)
         {
-            Console.Write("Naam: ");
-            string nameInput = Console.ReadLine();
-            int.TryParse(Console.ReadLine(), out int secondsInput);
-            Athlete newAthlete = new Athlete(nameInput, secondsInput);
-            // SIGNATURE
+            Athlete fastestRunner = new Athlete("Dummy", double.PositiveInfinity);
+            do 
+            {
+                Console.Write("Naam: ");
+                string nameInput = Console.ReadLine();
+                if (nameInput.Equals("STOP"))
+                {
+                    break;
+                }
+                Console.Write("Looptijd: ");
+                int.TryParse(Console.ReadLine(), out int secondsInput);
+                Athlete newAthlete = new Athlete(nameInput, secondsInput);
+                if (newAthlete != null && newAthlete.RunTime < fastestRunner.RunTime)
+                {
+                    fastestRunner = newAthlete;
+                }
+            }   
+            while (true); // Untill input is "STOP"
+            Console.WriteLine(fastestRunner.ToString());
         }
     }
 }
